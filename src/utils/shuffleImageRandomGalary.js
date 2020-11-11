@@ -1,11 +1,16 @@
 //images
-import allImages from '../components/imageList.component'
+import {easyModeImages, mediumModeImages, hardModeImages} from '../components/imageList.component'
+import {determinImageGalary, determinRandomLength} from './determinDifficulty'
 
 
   const setUpRandomGalary = (pairNums = 13) => {
     let imageGalary = []
+    let difficulty = determinImageGalary(pairNums)
+    let randomLength = determinRandomLength(difficulty)
+    let allImages = difficulty === 'easy' ? easyModeImages : difficulty === 'medium' ? mediumModeImages : hardModeImages 
+
     for(let i = 1; i < pairNums; i++){
-      let randomImage = Math.floor(Math.random() * Math.floor(11))
+      let randomImage = Math.floor(Math.random() * randomLength)
       imageGalary.push(allImages[randomImage])
       imageGalary.push(allImages[randomImage])
     }
