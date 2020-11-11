@@ -1,11 +1,11 @@
 import React from 'react'
-import useStyles from '../styles/cardStyle'
+import useStyles from '../../styles/cardStyle'
 
-const BackCard = (props) => {
+const FrontCard = (props) => {
     const classes = useStyles()
     return (
         <div className={classes.card}>{props.children}</div>
     )
 }
 
-export default BackCard
+export default FrontCard

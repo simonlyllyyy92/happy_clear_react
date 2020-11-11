@@ -5,9 +5,9 @@ import ReactCardFlip from 'react-card-flip';
 import FrontCard from './frontCard.component'
 import BackCard from './backCard.component'
 
-import puzzleCardBack from '../assets/puzzle-card-back.png'
+import puzzleCardBack from '../../assets/puzzle-card-back.png'
 //style
-import useStyles from '../styles/cardStyle'
+import useStyles from '../../styles/cardStyle'
 
 const Card = (props) => {
     const {state, clearCount, addCount, index, imageGalary} = props

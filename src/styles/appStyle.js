@@ -10,10 +10,11 @@ const useStyles = makeStyles({
       width: '100%',
       display: 'flex',
       justifyContent:'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      flexDirection: 'row'
     },
     content_container:{
-        width: '70%',
+        width: '75%',
         height: '468px',
         minHeight: '80%',
         display: 'flex',
@@ -23,13 +24,13 @@ const useStyles = makeStyles({
     },
     opacityTransition:{
       opacity: 0,
-      height: '30%',
-      width: '12%',
+      height: props => props.cardHeight || '30%',
+      width: props => props.cardWidth || '12%',
       transition: "opacity 1s" 
     },
     card:{
-      height: '30%',
-      width: '12%',
+      height: props => props.cardHeight || '30%',
+      width: props => props.cardWidth || '12%',
     },
     youWin_container: {
       width: '100%',
