@@ -41,11 +41,13 @@ export default function RadioButtonsGroup({value, handleSelectDifficulty}) {
     <div className={classes.difficultyContainer}>
       <div className={classes.difficultyContentContainer}>
         <WhiteFormLabel component="legend">Select Difficulty</WhiteFormLabel>
-        <RadioGroup className={classes.difficultyCheckBoxContainer} aria-label="difficulty" name="difficulty" value={value} onChange={handleChange}>
-          <FormControlLabel className = {classes.checkBoxLabel} value="easy" control={<WhiteRadio />} label={<Typography className={classes.checkBoxLabel}>Easy</Typography>} />
-          <FormControlLabel className = {classes.checkBoxLabel} value="medium" control={<WhiteRadio />} label={<Typography className={classes.checkBoxLabel}>Medium</Typography>}/>
-          <FormControlLabel className = {classes.checkBoxLabel} value="hard" control={<WhiteRadio />} label={<Typography className={classes.checkBoxLabel}>Hard</Typography>} />
-        </RadioGroup>
+        <div className ={classes.difficultyCheckBox}>
+          <RadioGroup className={classes.difficultyCheckBoxContainer} aria-label="difficulty" name="difficulty" value={value} onChange={handleChange}>
+              <FormControlLabel className = {classes.checkBoxLabel} value="easy" control={<WhiteRadio />} label={<Typography className={classes.checkBoxLabel}>Easy</Typography>} />
+              <FormControlLabel className = {classes.checkBoxLabel} value="medium" control={<WhiteRadio />} label={<Typography className={classes.checkBoxLabel}>Medium</Typography>}/>
+              <FormControlLabel className = {classes.checkBoxLabel} value="hard" control={<WhiteRadio />} label={<Typography className={classes.checkBoxLabel}>Hard</Typography>} />
+          </RadioGroup>
+        </div>
       </div>
     
     </div>

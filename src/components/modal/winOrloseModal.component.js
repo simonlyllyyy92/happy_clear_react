@@ -1,7 +1,6 @@
 import React from 'react'
 
 import useStyles from '../../styles/appStyle'
-import youWin from '../../assets/youwin.gif'
 import Button from '@material-ui/core/Button';
 import Modal from 'react-modal';
 import GifPlayer from 'react-gif-player'
@@ -15,7 +14,10 @@ const WinOrLoseModal = (props) => {
       }
     
       const handleLogOut = () => {
-        window.close()
+        window.opener = null;
+        window.open("", "_self");
+        window.close();
+        props.onRequestClose()
       }
     
 
@@ -31,7 +33,7 @@ const WinOrLoseModal = (props) => {
         }
     };
    
-    const {isOpen, onRequestClose} = props
+    const {isOpen, onRequestClose, gifImage} = props
     return (
         <Modal
             isOpen={isOpen}
@@ -40,8 +42,8 @@ const WinOrLoseModal = (props) => {
             contentLabel="Example Modal"
         >
             <div className = {classes.youWin_container}>
-                <h2 style={{fontSize: "24px"}}>！！You Win ！！</h2>
-                <GifPlayer gif={youWin} autoplay={true} style={{width: '100%', objectFit: 'fill'}}/>
+                <h2 style={{fontSize: "24px"}}>{`！！${props.modalMsg} ！！`}</h2>
+                <GifPlayer gif={gifImage} autoplay={true} style={{width: '100%', objectFit: 'fill'}}/>
                 <div className = {classes.button}>
                 <Button variant="contained" color="primary" onClick={handleHardReload}>
                     Play Again

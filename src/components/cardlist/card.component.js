@@ -5,12 +5,14 @@ import ReactCardFlip from 'react-card-flip';
 import FrontCard from './frontCard.component'
 import BackCard from './backCard.component'
 
-import puzzleCardBack from '../../assets/puzzle-card-back.png'
+import cardBackEasy from '../../assets/cardback_0.png'
+import cardBackMedium from '../../assets/cardback_5.png'
+import cardBackHard from '../../assets/cardback_8.png'
 //style
 import useStyles from '../../styles/cardStyle'
 
 const Card = (props) => {
-    const {state, clearCount, addCount, index, imageGalary} = props
+    const {state, clearCount, addCount, index, imageGalary, difficulty} = props
     const [isFlipped, setisFlipped] = useState(false)
    
     const handleClick = (e) => {
@@ -41,7 +43,16 @@ const Card = (props) => {
               width: '100%'
         }}>
           <FrontCard>
-            <img className={classes.card_back} src = {puzzleCardBack} alt="Unavailable" onClick={handleClick}/>
+            <img 
+              className={classes.card_back} 
+              src = {
+                difficulty === 'easy' ?
+                cardBackEasy : difficulty === 'medium' ?
+                cardBackMedium : cardBackHard
+              } 
+              alt="Unavailable" 
+              onClick={handleClick}
+            />
           </FrontCard>
           <BackCard>
             <img className={classes.card_image} src = {imageGalary.imgUrl} alt='Unavailable' onClick={handleClick}/>

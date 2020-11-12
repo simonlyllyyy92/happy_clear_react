@@ -10,6 +10,11 @@ import WinOrLoseModal from './components/modal/winOrloseModal.component'
 //utils
 import {shuffleImageRandomGalary} from './utils/shuffleImageRandomGalary'
 import {determineDifficulty} from './utils/determinDifficulty'
+//countDown 
+import CountDown from './components/countDown'
+//gif images
+import youWin from './assets/youwin.gif'
+import youLoose from './assets/youloose.gif'
 
 const App = () => {
   const classes = useStyles()
@@ -24,13 +29,17 @@ const App = () => {
   const [modalIsOpen,setIsOpen] = useState(false);
   const [initialRender, setRenderCount] = useState(0)
   const [difficulty, setdifficulty] = useState('easy')
+  const [modalMsg, setModalMsg] = useState('')
+  const [hasWon, setHasWon] = useState(false)
   const [hightAndWidth, setHeightAndWidth] = useState({
     cardHeight: '',
     cardWidth: '',
-    pairNums: 13
+    pairNums: 13,
+    countDownTime: 180000
   })
 
-  const openModal = () => {
+  const openModal = (msg) => {
+    setModalMsg(msg)
     setIsOpen(true);
   }
 
@@ -68,7 +77,8 @@ const App = () => {
   useEffect(() => {
     const is_win = imageGalary.find(item => item.is_shown === true) 
     if(!is_win && initialRender !== 0){
-      openModal()
+      openModal('You Win')
+      setHasWon(true)
     }
   }, [state])
 
@@ -77,7 +87,8 @@ const App = () => {
     setHeightAndWidth({
       cardHeight: determinObject.cardHeight,
       cardWidth: determinObject.cardWidth,
-      pairNums: determinObject.pairNums
+      pairNums: determinObject.pairNums,
+      countDownTime: determinObject.countDownTime
     })
   }, [difficulty])
 
@@ -90,11 +101,21 @@ const App = () => {
       <WinOrLoseModal 
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
+        modalMsg = {modalMsg}
+        gifImage = {hasWon ? youWin : youLoose}
       />
       <div className={classes.root_container}>
-        <DifficultySel value={difficulty} handleSelectDifficulty={setdifficulty}/>
+        <div className = {classes.left_container}>
+          <DifficultySel value={difficulty} handleSelectDifficulty={setdifficulty}/>
+          <CountDown 
+            time = {hightAndWidth.countDownTime} 
+            openModal={openModal}
+            hasWon = {hasWon}
+          />
+        </div>
         <CardList 
           imageGalary = {imageGalary}
+          difficulty = {difficulty}
           incrementCount = {incrementCount}
           clearCount = {clearCount}
           state = {state}

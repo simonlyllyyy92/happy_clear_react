@@ -4,15 +4,16 @@ import Card from './card.component'
 import useStyles from '../../styles/appStyle'
 
 const Cardlist = (props) => {
-    const {imageGalary, incrementCount, clearCount, state, cardHeight, cardWidth} = props
+    const {imageGalary, incrementCount, clearCount, state, cardHeight, cardWidth, difficulty} = props
     const classes = useStyles({cardHeight, cardWidth})
     return (
         <div className = {classes.content_container}>
             {imageGalary.map((item,index) => {
                 return (
-                <div className = {item.is_shown ? classes.card : classes.opacityTransition}>
+                <div key={index} className = {item.is_shown ? classes.card : classes.opacityTransition}>
                 <Card
-                    index = {index} 
+                    index = {index}
+                    difficulty = {difficulty} 
                     imageGalary = {item} 
                     state = {state} 
                     addCount = {incrementCount} 

@@ -46,6 +46,14 @@ const useStyles = makeStyles({
       alignItems:'center',
       justifyContent:'space-evenly',
       marginTop: '15px'
+    },
+    left_container:{
+      height: '468px',
+      minHeight: '80%',
+      width: '15%',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems:'flex-start'
     }
     
 });
