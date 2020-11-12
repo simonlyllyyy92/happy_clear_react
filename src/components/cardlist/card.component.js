@@ -5,11 +5,12 @@ import ReactCardFlip from 'react-card-flip';
 import FrontCard from './frontCard.component'
 import BackCard from './backCard.component'
 
-import cardBackEasy from '../../assets/cardback_0.png'
-import cardBackMedium from '../../assets/cardback_5.png'
-import cardBackHard from '../../assets/cardback_8.png'
+import cardBackHard from '../../assets/cardback_easy.gif'
+import cardBackEasy from '../../assets/iceCrown_cardback.gif'
+import cardBackMedium from '../../assets/cardBack_medium.gif'
 //style
 import useStyles from '../../styles/cardStyle'
+
 
 const Card = (props) => {
     const {state, clearCount, addCount, index, imageGalary, difficulty} = props
@@ -22,7 +23,7 @@ const Card = (props) => {
         addCount(index, imageGalary.id)
       }
     } 
-    
+
     const classes = useStyles()
 
     useEffect(() => {
@@ -30,34 +31,35 @@ const Card = (props) => {
         setTimeout(function(){  
             setisFlipped(false)
             clearCount()
-        }, 500)
+        }, 450)
       }
     },[state.count])
 
+
       return (
-        <ReactCardFlip 
-            isFlipped={isFlipped} 
-            flipDirection="horizontal" 
-            containerStyle = {{
-              height: '100%',
-              width: '100%'
-        }}>
-          <FrontCard>
-            <img 
-              className={classes.card_back} 
-              src = {
-                difficulty === 'easy' ?
-                cardBackEasy : difficulty === 'medium' ?
-                cardBackMedium : cardBackHard
-              } 
-              alt="Unavailable" 
-              onClick={handleClick}
-            />
-          </FrontCard>
-          <BackCard>
-            <img className={classes.card_image} src = {imageGalary.imgUrl} alt='Unavailable' onClick={handleClick}/>
-          </BackCard>
-        </ReactCardFlip>
+          <ReactCardFlip 
+              isFlipped={isFlipped} 
+              flipDirection="horizontal" 
+              containerStyle = {{
+                height: '100%',
+                width: '100%'
+          }}>
+            <FrontCard>
+              <img 
+                className={classes.card_back} 
+                src = {
+                  difficulty === 'easy' ?
+                  cardBackEasy : difficulty === 'medium' ?
+                  cardBackMedium : cardBackHard
+                } 
+                alt="Unavailable" 
+                onClick={handleClick}
+              />
+            </FrontCard>
+            <BackCard>
+              <img className={classes.card_image} src = {imageGalary.imgUrl} alt='Unavailable' onClick={handleClick}/>
+            </BackCard>
+          </ReactCardFlip>
       )
   }
 

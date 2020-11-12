@@ -1,9 +1,9 @@
 import { makeStyles } from '@material-ui/core/styles';
-import starbackground from '../assets/starbackground.jpg'
+import animatedBackground from '../assets/animatedBackground.gif'
 
 const useStyles = makeStyles({
     root_container: {
-      backgroundImage: `url(${starbackground})`,
+      backgroundImage: `url(${animatedBackground})`,
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
       height: '100vh',
@@ -11,7 +11,8 @@ const useStyles = makeStyles({
       display: 'flex',
       justifyContent:'center',
       alignItems: 'center',
-      flexDirection: 'row'
+      flexDirection: 'row',
+      overflow: 'hidden',
     },
     content_container:{
         width: '75%',
@@ -21,6 +22,8 @@ const useStyles = makeStyles({
         flexWrap: 'wrap',
         justifyContent: 'space-evenly',
         alignItems:'center',
+        transform: props => props.transformPosition,
+        transition: 'transform 1s'
     },
     opacityTransition:{
       opacity: 0,

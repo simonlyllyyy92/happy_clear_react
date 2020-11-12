@@ -4,7 +4,7 @@ import useStyles from '../../styles/cardStyle'
 const BackCard = (props) => {
     const classes = useStyles()
     return (
-        <div className={classes.card}>{props.children}</div>
+        <div className={classes.card_back_container}>{props.children}</div>
     )
 }
 
