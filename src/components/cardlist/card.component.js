@@ -8,7 +8,6 @@ import BackCard from './backCard.component'
 import cardBackHard from '../../assets/cardback_easy.gif'
 import cardBackEasy from '../../assets/iceCrown_cardback.gif'
 import cardBackMedium from '../../assets/cardBack_medium.gif'
-import logo from '../../assets/logo192.png'
 //style
 import useStyles from '../../styles/cardStyle'
 import BackgroundImageOnLoad from 'background-image-on-load'
@@ -50,7 +49,7 @@ const Card = (props) => {
             <FrontCard>
               <img 
                 className={classes.card_back} 
-                src = {!bgIsLoaded ? logo : 
+                src = {
                   difficulty === 'easy' ?
                   cardBackEasy : difficulty === 'medium' ?
                   cardBackMedium : cardBackHard
@@ -58,14 +57,6 @@ const Card = (props) => {
                 alt="Unavailable" 
                 onClick={handleClick}
               />
-               <BackgroundImageOnLoad	
-                  src={difficulty === 'easy' ?
-                  cardBackEasy : difficulty === 'medium' ?
-                  cardBackMedium : cardBackHard}	
-                  onLoadBg={() =>	
-                    setBgIsLoaded(true)}	
-                  onError={err => console.log('error', err)}	
-                />	
             </FrontCard>
             <BackCard>
               <img className={classes.card_image} src = {imageGalary.imgUrl} alt='Unavailable' onClick={handleClick}/>
