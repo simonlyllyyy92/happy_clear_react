@@ -10,13 +10,11 @@ import cardBackEasy from '../../assets/iceCrown_cardback.gif'
 import cardBackMedium from '../../assets/cardBack_medium.gif'
 //style
 import useStyles from '../../styles/cardStyle'
-import BackgroundImageOnLoad from 'background-image-on-load'
 
 
 const Card = (props) => {
     const {state, clearCount, addCount, index, imageGalary, difficulty} = props
     const [isFlipped, setisFlipped] = useState(false)
-    const [bgIsLoaded, setBgIsLoaded] = useState(false)
    
     const handleClick = (e) => {
       e.preventDefault();

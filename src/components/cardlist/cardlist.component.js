@@ -14,17 +14,20 @@ const Cardlist = (props) => {
         }
     },[difficulty])
 
-    useEffect(() => {
+
+    const setTrans = () => {
         const timeout = setTimeout(() => {
             if(transformPosition !== 'translate(0px, 0px)'){
                 setPosition('translate(0px, 0px)')
             }
         }, 1000)
         return () => clearTimeout(timeout)
-    }, [transformPosition])
+    }
+  
+
   
     return (
-        <div className = {classes.content_container}>
+        <div id="imgGalary" onLoad={setTrans} className = {classes.content_container}>
                 {imageGalary.map((item,index) => {
                     return (
                     <div key={index} className = {item.is_shown ? classes.card : classes.opacityTransition}>
