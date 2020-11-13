@@ -27,18 +27,18 @@ const Cardlist = (props) => {
 
   
     return (
-        <div id="imgGalary" onLoad={setTrans} className = {classes.content_container}>
+        <div key={difficulty} onLoad={setTrans} className = {classes.content_container}>
                 {imageGalary.map((item,index) => {
                     return (
                     <div key={index} className = {item.is_shown ? classes.card : classes.opacityTransition}>
-                    <Card
-                        index = {index}
-                        difficulty = {difficulty} 
-                        imageGalary = {item} 
-                        state = {state} 
-                        addCount = {incrementCount} 
-                        clearCount = {clearCount}
-                    />
+                        <Card
+                            index = {index}
+                            difficulty = {difficulty} 
+                            imageGalary = {item} 
+                            state = {state} 
+                            addCount = {incrementCount} 
+                            clearCount = {clearCount}
+                        />
                     </div>)
                 })}
         </div>
