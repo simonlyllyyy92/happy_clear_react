@@ -45,16 +45,25 @@ const Card = (props) => {
                 width: '100%'
           }}>
             <FrontCard>
-              <img 
-                className={classes.card_back} 
-                src = {
-                  difficulty === 'easy' ?
-                  cardBackEasy : difficulty === 'medium' ?
-                  cardBackMedium : cardBackHard
-                } 
-                alt="Unavailable" 
-                onClick={handleClick}
-              />
+                {difficulty === 'easy' ? 
+                  <img 
+                  className={classes.card_back} 
+                  src = {cardBackEasy} 
+                  alt="Unavailable" 
+                  onClick={handleClick}
+                /> : difficulty === 'medium' ? 
+                  <img 
+                    className={classes.card_back} 
+                    src = {cardBackMedium} 
+                    alt="Unavailable" 
+                    onClick={handleClick}
+                  /> :  <img 
+                  className={classes.card_back} 
+                  src = {cardBackHard} 
+                  alt="Unavailable" 
+                  onClick={handleClick}
+                />
+              }
             </FrontCard>
             <BackCard>
               <img className={classes.card_image} src = {imageGalary.imgUrl} alt='Unavailable' onClick={handleClick}/>
